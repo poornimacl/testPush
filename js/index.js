@@ -77,8 +77,8 @@ var app = {
                     var ref = window.open('http://www.apple.com', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "alert('Injected Code')" });          
-                       //   ref.executeScript({ file: "externaljavascriptfile.js" });
+                       ref.executeScript({ code: "var x = document.getElementById('platform').value = 'Google'" });
+                       ref.executeScript({ code: "var x = document.getElementById('token').value = 'Testme'" }); 
                         showalert();          
                        });
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
