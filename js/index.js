@@ -38,11 +38,14 @@ var app = {
         console.log('Device  ready');
           alert('Opening URL !!');
                     var ref = window.open('http://192.168.1.12:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
-                    ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+                    ref.addEventListener('loadstart', function(event) { 
+                       ref.executeScript({ code: "document.getElementById('platform').value = 'Google'" });
+                       ref.executeScript({ code: "document.getElementById('token').value = 'Testme'" }); 
+                        alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "var x = document.getElementById('platform').value = 'Google'" });
-                       ref.executeScript({ code: "var x = document.getElementById('token').value = 'Testme'" }); 
-                        showalert();          
+                       ref.executeScript({ code: "document.getElementById('platform').value = 'Google'" });
+                       ref.executeScript({ code: "document.getElementById('token').value = 'Testme'" }); 
+                         alert('stop: ');       
                        });
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
                   ref.addEventListener('exit', function(event) { alert(event.type); });   
