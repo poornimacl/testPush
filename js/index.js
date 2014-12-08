@@ -39,21 +39,27 @@ var app = {
           alert('Opening URL !!');
                     var ref = window.open('http://192.168.1.12:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
-                       ref.executeScript({ code: "document.getElementById('platform').value = 'Google'" });
-                       ref.executeScript({ code: "document.getElementById('token').value = 'Testme'" }); 
                         alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "document.getElementById('platform').value = 'Google'" });
-                       ref.executeScript({ code: "document.getElementById('token').value = 'Testme'" }); 
-                         alert('stop: ');       
-                       });
+                       ref.executeScript({ code: "var p = document.getElementById('platform'); p.value = 'Google'; p.ng-model='Google';" 
+                                         }, function () { 
+                           alert("Platform set");
+                                 });
+                          ref.executeScript({ code: "var t = document.getElementById('token'); t.value = 'Testme'; p.ng-model='Testme';" 
+                                            }, function() {
+                         alert('Token set ');       
+                           }); 
+                    });
+                 
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
                   ref.addEventListener('exit', function(event) { alert(event.type); });   
     //    var pushNotification = window.plugins.pushNotification;
       
     //    pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
         
-        
+
+
+  
 
     },
     // Update DOM on a Received Event
