@@ -41,13 +41,13 @@ var app = {
                     ref.addEventListener('loadstart', function(event) { 
                         alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "var p = document.getElementById('platform'); p.ng-value = 'Google'; " 
+                       ref.executeScript({ code: "var p = document.getElementById('platform').ng-value; " 
                                          }, function () { 
-                           alert("Platform set");
+                           alert("Platform get " +p);
                                  });
-                          ref.executeScript({ code: "var t = document.getElementById('token'); t.ng-value = 'Testme';" 
+                          ref.executeScript({ code: "var t = document.getElementById('token').ng-value;" 
                                             }, function() {
-                         alert('Token set ');       
+                         alert('Token get ' + t);       
                            }); 
                     });
                  
