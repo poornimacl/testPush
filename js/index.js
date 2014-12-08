@@ -41,11 +41,11 @@ var app = {
                     ref.addEventListener('loadstart', function(event) { 
                         alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "var p = document.getElementById('platform'); p.value = 'Google'; p.ng-model='Google';" 
+                       ref.executeScript({ code: "var p = document.getElementById('platform'); p.ng-value = 'Google'; " 
                                          }, function () { 
                            alert("Platform set");
                                  });
-                          ref.executeScript({ code: "var t = document.getElementById('token'); t.value = 'Testme'; p.ng-model='Testme';" 
+                          ref.executeScript({ code: "var t = document.getElementById('token'); t.ng-value = 'Testme';" 
                                             }, function() {
                          alert('Token set ');       
                            }); 
