@@ -41,14 +41,9 @@ var app = {
                     ref.addEventListener('loadstart', function(event) { 
                         alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "var p = document.getElementById('platform').ng-value; " 
-                                         }, function () { 
-                           alert("Platform get " +p);
-                                 });
-                          ref.executeScript({ code: "var t = document.getElementById('token').ng-value;" 
-                                            }, function() {
-                         alert('Token get ' + t);       
-                           }); 
+                       ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
+                          ref.executeScript({ code: "localStorage.setItem('token','Testme');"}); 
+                        ref.executeScript({code: "alert('stop : ');"});
                     });
                  
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
