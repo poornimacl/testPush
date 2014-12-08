@@ -36,21 +36,10 @@ var app = {
         app.receivedEvent('deviceready');
         alert('Device is ready!');
         console.log('Device  ready');
-          alert('Opening URL !!');
-                    var ref = window.open('http://192.168.1.12:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
-                    ref.addEventListener('loadstart', function(event) { 
-                        alert('start: ' + event.url); });
-                    ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
-                          ref.executeScript({ code: "localStorage.setItem('token','Testme');"}); 
-                        ref.executeScript({code: "alert('stop : ');"});
-                    });
-                 
-                  ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-                  ref.addEventListener('exit', function(event) { alert(event.type); });   
-    //    var pushNotification = window.plugins.pushNotification;
+         
+       var pushNotification = window.plugins.pushNotification;
       
-    //    pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
+        pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
         
 
 
@@ -83,20 +72,22 @@ var app = {
             case 'registered':
                 if ( e.regid.length > 0 )
                 {
+                    var regid = e.regid;
                     console.log("Regid " + e.regid);
-                    alert('Registration id is '+e.regid);
+                    alert('Registration id is '+e.regid);                  
                     
-                    
-                    alert('Opening URL !!');
+                   alert('Opening URL !!');
                     var ref = window.open('http://192.168.1.12:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
-                    ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+                    ref.addEventListener('loadstart', function(event) { 
+                        alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
-                       ref.executeScript({ code: "var x = document.getElementById('platform').value = 'Google'" });
-                       ref.executeScript({ code: "var x = document.getElementById('token').value = 'Testme'" }); 
-                        showalert();          
-                       });
+                          ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
+                          ref.executeScript({ code: "localStorage.setItem('token',regid);"}); 
+                        ref.executeScript({code: "alert('stop : ');"});
+                    });
+                 
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-                  ref.addEventListener('exit', function(event) { alert(event.type); });   
+                  ref.addEventListener('exit', function(event) { alert(event.type); });      
 
                 }
                 break;
