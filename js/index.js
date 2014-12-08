@@ -34,16 +34,13 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        alert('Device is ready!');
+        alert('Device is ready!!!');
         console.log('Device  ready');
          
        var pushNotification = window.plugins.pushNotification;
       
-        pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
+    pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
         
-
-
-  
 
     },
     // Update DOM on a Received Event
@@ -74,16 +71,16 @@ var app = {
                 {
                     var regid = e.regid;
                     console.log("Regid " + e.regid);
-                    alert('Registration id is '+e.regid);                  
+                    alert('Registration id is : '+e.regid);                  
                     
-                   alert('Opening URL !!');
+                   alert('Opening URL !!!');
                     var ref = window.open('http://192.168.1.12:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('start: ' + event.url); });
                     ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
                           ref.executeScript({ code: "localStorage.setItem('token',regid);"}); 
-                        ref.executeScript({code: "alert('stop : ');"});
+                        ref.executeScript({code: "alert('stopped !!! ');"});
                     });
                  
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
