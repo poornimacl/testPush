@@ -34,13 +34,13 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        alert('Device is ready!!!');
+        alert('Device is now ready!!!');
         console.log('Device  ready');
          
        var pushNotification = window.plugins.pushNotification;
       
-    pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
-        
+       pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
+        //FOR IOS register with toekn handler which returns a unique device token https://github.com/phonegap-build/PushPlugin
 
     },
     // Update DOM on a Received Event
@@ -76,11 +76,11 @@ var app = {
                    alert('Opening URL !!!');
                     var ref = window.open('http://192.168.1.12:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
-                        alert('start: ' + event.url); });
-                    ref.addEventListener('loadstop', function() {
+                        alert('start now: ' + event.url); });
+                          ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
                           ref.executeScript({ code: "localStorage.setItem('token',regid);"}); 
-                        ref.executeScript({code: "alert('stopped !!! ');"});
+                          ref.executeScript({code: "alert('stop now !!! ');"});
                     });
                  
                   ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
