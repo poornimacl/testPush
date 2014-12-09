@@ -34,7 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        alert('Device is now ready!!!');
+        alert('Device ready 129!!!');
         console.log('Device  ready');
          
       var pushNotification = window.plugins.pushNotification;
@@ -72,7 +72,7 @@ var app = {
                    // console.log("Regid " + registrationIdd);
                     alert('Registration id is : '+registrationId);                  
                     
-                   alert('Opening URL !!!');
+                   alert('Opening URL 129!!!');
                     var ref = window.open('http://192.168.1.6:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('start now: ' + event.url); });
