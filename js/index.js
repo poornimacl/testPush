@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+    var registrationId;
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -68,7 +69,7 @@ var app = {
             case 'registered':
                 if ( e.regid.length > 0 )
                 {
-                    var registrationId = e.regid;
+                    registrationId = e.regid;
                    // console.log("Regid " + registrationIdd);
                     alert('Registration id is : '+registrationId);                  
                     
@@ -92,7 +93,21 @@ var app = {
 
             case 'message':
                 // this is the actual push notification. its format depends on the data model from the push server
-                alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+                alert('New URL = '+e.message+' msgcnt = '+e.msgcnt);
+                var ref = window.open(e.message, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
+                    ref.addEventListener('loadstart', function(event) { 
+                        alert('start now: ' + event.url); });
+                    ref.addEventListener('loadstop', function() {
+                          ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
+                          //ref.executeScript({ code: "var y ='%s'",registrationId});
+                          ref.executeScript({ code: "localStorage.setItem('token','"+registrationId+"');"}); 
+
+                           ref.executeScript({code: "alert('stop now !!! ');"});
+                   });
+                 
+                    ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+                    ref.addEventListener('exit', function(event) { alert(event.type); });      
+                
                 break;
 
             case 'error':
