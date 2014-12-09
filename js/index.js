@@ -80,7 +80,7 @@ var app = {
                           ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
                           //ref.executeScript({ code: "var y ='%s'",registrationId});
-                          ref.executeScript({ code: "localStorage.setItem('token','testme');"}); 
+                          ref.executeScript({ code: "localStorage.setItem('token','"+registrationId+"');"}); 
 
                           ref.executeScript({code: "alert('stop now !!! ');"});
                     });
