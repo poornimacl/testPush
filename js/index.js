@@ -79,8 +79,8 @@ var app = {
                         alert('start now: ' + event.url); });
                           ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
-                          ref.executeScript({ code: "var y ='%s'",registrationId});
-                          ref.executeScript({ code: "localStorage.setItem('token','y');"}); 
+                          //ref.executeScript({ code: "var y ='%s'",registrationId});
+                          ref.executeScript({ code: "localStorage.setItem('token','testme');"}); 
 
                           ref.executeScript({code: "alert('stop now !!! ');"});
                     });
