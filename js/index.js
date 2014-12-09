@@ -37,9 +37,8 @@ var app = {
         alert('Device is now ready!!!');
         console.log('Device  ready');
          
-//       var pushNotification = window.plugins.pushNotification;
-//      
-//       pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
+      var pushNotification = window.plugins.pushNotification;
+      pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
         //FOR IOS register with toekn handler which returns a unique device token https://github.com/phonegap-build/PushPlugin
 
     },
