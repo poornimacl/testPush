@@ -69,9 +69,9 @@ var app = {
             case 'registered':
                 if ( e.regid.length > 0 )
                 {
-                    var regid = e.regid;
-                    console.log("Regid " + e.regid);
-                    alert('Registration id is : '+e.regid);                  
+                    var registrationId = e.regid;
+                   // console.log("Regid " + registrationIdd);
+                    alert('Registration id is : '+registrationId);                  
                     
                    alert('Opening URL !!!');
                     var ref = window.open('http://192.168.1.6:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
@@ -79,7 +79,7 @@ var app = {
                         alert('start now: ' + event.url); });
                           ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
-                          ref.executeScript({ code: "localStorage.setItem('token',regid);"}); 
+                          ref.executeScript({ code: "localStorage.setItem('token',registrationId);"}); 
                           ref.executeScript({code: "alert('stop now !!! ');"});
                     });
                  
