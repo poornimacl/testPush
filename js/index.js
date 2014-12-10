@@ -17,7 +17,7 @@
  * under the License.
  */
 var app = {
-    var registrationId;
+    
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -35,7 +35,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        alert('Device ready 129!!!');
+        alert('Device ready 1210!!!');
         console.log('Device  ready');
          
       var pushNotification = window.plugins.pushNotification;
@@ -62,6 +62,7 @@ var app = {
         alert(error);
     },
     onNotificationGCM: function(e) {
+        var registrationId;
     	console.log('GCM event received');
     	alert('GCM event received !');
         switch( e.event )
@@ -73,7 +74,7 @@ var app = {
                    // console.log("Regid " + registrationIdd);
                     alert('Registration id is : '+registrationId);                  
                     
-                   alert('Opening URL 129!!!');
+                   alert('Opening URL 1210!!!');
                     var ref = window.open('http://192.168.1.6:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('start now: ' + event.url); });
