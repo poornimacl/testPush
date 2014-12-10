@@ -37,9 +37,13 @@ var app = {
         app.receivedEvent('deviceready');
         alert('Device ready 1210!!!');
         console.log('Device  ready');
-         
-      var pushNotification = window.plugins.pushNotification;
-      pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
+         if(localStorage.getItem("regIdSet") != 1)
+         {
+             alert("Calling push notification");
+              var pushNotification = window.plugins.pushNotification;
+              pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
+             localStorage.setItem("regIdSet","1");
+         }
         //FOR IOS register with toekn handler which returns a unique device token https://github.com/phonegap-build/PushPlugin
 
     },
@@ -73,7 +77,7 @@ var app = {
                     var registrationId = e.regid;
                    // console.log("Regid " + registrationIdd);
                     alert('Registration id is : '+registrationId);                  
-                    
+                    localStorage.setItem("regId",registrationId);
                    alert('Opening URL 1210!!!');
                     var ref = window.open('http://192.168.1.6:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
