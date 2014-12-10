@@ -36,14 +36,12 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     
-        alert('Device is yo ready');
-        var regId = localStorage.getItem('regId');
-        if (typeof regId == 'undefined' || regId == null)
-         {
-            alert("Calling push notification");
+        alert('Device is yum ready');
+       
+           // alert("Calling push notification");
             var pushNotification = window.plugins.pushNotification;
             pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"211518520885","ecb":"app.onNotificationGCM"});
-        }
+        
          
         //FOR IOS, register with token handler which returns a unique device token https://github.com/phonegap-build/PushPlugin
 
@@ -75,36 +73,50 @@ var app = {
             case 'registered':
                 if ( e.regid.length > 0 )
                 {
-                    var registrationId = e.regid;
+                     var registrationId = e.regid;
                    // console.log("Regid " + registrationIdd);
-                    alert('Registration id is : '+registrationId);                  
-                    localStorage.setItem("regId",registrationId);
-                   
-                    var ref = window.open('http://192.168.1.6:8100', '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
-                    ref.addEventListener('loadstart', function(event) { 
-                        alert('Opening Ionic URL: ' + event.url); 
-                    });
-                    ref.addEventListener('loadstop', function() {
-                          ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
-                          ref.executeScript({ code: "localStorage.setItem('token','"+registrationId+"');"});                          
-                   });               
-                    ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-                    ref.addEventListener('exit', function(event) { alert(event.type); });      
-
+                //    alert('Registration id is : '+registrationId);  
+                     var regId = localStorage.getItem('regId');
+                     var lastURL = localStorage.getItem('lastURL');
+                     if (regId == null)
+                     {
+                         localStorage.setItem('regId',registrationId);
+                         alert('Setting reg id to : '+registrationId);  
+                     }
+                     if(lastURL == null)
+                     {
+                         localStorage.setItem("lastURL","http://192.168.1.6:8100");
+                         lastURL = localStorage.getItem('lastURL');
+                         alert('Setting URL to : ' +lastURL );  
+                     }
+                     var ref = window.open(lastURL, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
+                         ref.addEventListener('loadstart', function(event) { 
+                            // alert('Opening Ionic URL: ' + event.url); 
+                         });
+                         ref.addEventListener('loadstop', function() {
+                             ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
+                             ref.executeScript({ code: "localStorage.setItem('token','"+registrationId+"');"});                          
+                         });               
+                         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+                         ref.addEventListener('exit', function(event) { alert(event.type); });      
+                     
                 }
                 break;
 
             case 'message':
                 // this is the actual push notification. its format depends on the data model from the push server
-                alert('New URL = '+e.message+' msgcnt = '+e.msgcnt);
+               // alert('New URL = '+e.message+' msgcnt = '+e.msgcnt);
+                localStorage.setItem('lastURL',e.message);
+                 alert('Setting URL to : ' +lastURL );  
                 var ref = window.open(e.message, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('Open URL in notification: ' + event.url); });
+                
                     ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
                           ref.executeScript({ code: "localStorage.setItem('token','"+localStorage.getItem("regId")+"');"}); 
                        
-                   });
+                    });
                  
                     ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
                     ref.addEventListener('exit', function(event) { alert(event.type); });      
