@@ -114,7 +114,7 @@ var app = {
                 
                     ref.addEventListener('loadstop', function() {
                           ref.executeScript({ code: "localStorage.setItem('platform', 'Google');"});
-                          ref.executeScript({ code: "localStorage.setItem('token','"+localStorage.getItem("regId")+"');"}); 
+                          ref.executeScript({ code: "localStorage.setItem('token','"+localStorage.getItem('regId')+"');"}); 
                        
                     });
                  
