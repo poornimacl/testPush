@@ -36,7 +36,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     
-        alert('Device is yum ready');
+       // alert('Device is yum ready');
        
            // alert("Calling push notification");
             var pushNotification = window.plugins.pushNotification;
@@ -67,7 +67,7 @@ var app = {
     onNotificationGCM: function(e) {
 
     	console.log('GCM event received');
-    	alert('GCM event received !');
+    	//alert('GCM event received !');
         switch( e.event )
         {
             case 'registered':
@@ -81,7 +81,7 @@ var app = {
                      if (regId == null)
                      {
                          localStorage.setItem('regId',registrationId);
-                         alert('Setting reg id to : '+registrationId);  
+                       //  alert('Setting reg id to : '+registrationId);  
                      }
                      if(lastURL == null)
                      {
@@ -107,7 +107,7 @@ var app = {
                 // this is the actual push notification. its format depends on the data model from the push server
                // alert('New URL = '+e.message+' msgcnt = '+e.msgcnt);
                 localStorage.setItem('lastURL',e.message);
-                 alert('Setting URL to : ' +lastURL );  
+             //    alert('Setting URL to : ' +lastURL );  
                 var ref = window.open(e.message, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('Open URL in notification: ' + event.url); });
