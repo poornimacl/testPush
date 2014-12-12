@@ -102,7 +102,7 @@ var app = {
     onNotificationGCM: function(e) {
 
     	console.log('GCM event received');
-    	//alert('GCM event received !');
+    	alert('GCM event received !');
         switch( e.event )
         {
             case 'registered':
@@ -114,12 +114,14 @@ var app = {
                      if (regId == null)
                      {
                          localStorage.setItem('regId',registrationId);
+                         alert ('REg id ' +registrationId);
                       
                      }
                      if(lastURL == null)
                      {
                          localStorage.setItem("lastURL","http://172.16.0.12:8100");
                          lastURL = localStorage.getItem('lastURL');
+                         alert('Last URL ' +lastURL);
                          
                      }
                      var ref = window.open(lastURL, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
