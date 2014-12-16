@@ -1,21 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 var app = {
     
     // Application Constructor
@@ -35,7 +18,7 @@ var app = {
         app.receivedEvent('deviceready');
         var pushNotification = window.plugins.pushNotification;
         if(device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos"){ 
-            alert('registering android device');
+           // alert('registering android device');
             pushNotification.register(app.successHandler, app.errorHandler, 
             {
                 "senderID":"211518520885",
@@ -114,19 +97,20 @@ var app = {
                      if (regId == null)
                      {
                          localStorage.setItem('regId',registrationId);
-                         alert ('REg id ' +registrationId);
+                       //  alert ('REg id ' +registrationId);
                       
                      }
                      if(lastURL == null)
                      {
-                         localStorage.setItem("lastURL","http://10.0.3.2:8100");
+                         //localStorage.setItem("lastURL","http://10.0.3.2:8100");
+                         localStorage.setItem("lastURL","http://192.168.1.6:8100");
                          lastURL = localStorage.getItem('lastURL');
-                         alert('Last URL ' +lastURL);
+                       //  alert('Last URL ' +lastURL);
                          
                      }
                      var ref = window.open(lastURL, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
                          ref.addEventListener('loadstart', function(event) { 
-                             alert('Opening Ionic URL: ' + event.url); 
+                            // alert('Opening Ionic URL: ' + event.url); 
                          });
                          ref.addEventListener('loadstop', function() {
                              ref.executeScript({ code: "localStorage.setItem('platform','" +device.platform+"');"});
