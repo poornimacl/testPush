@@ -102,8 +102,8 @@ var app = {
                      }
                      if(lastURL == null)
                      {
-                         //localStorage.setItem("lastURL","http://10.0.3.2:8100");
-                         localStorage.setItem("lastURL","http://192.168.1.6:8100");
+                         localStorage.setItem("lastURL","http://10.0.3.2:8100");
+                        // localStorage.setItem("lastURL","http://192.168.1.6:8100");
                          lastURL = localStorage.getItem('lastURL');
                        //  alert('Last URL ' +lastURL);
                          
