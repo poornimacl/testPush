@@ -18,7 +18,7 @@ var app = {
         app.receivedEvent('deviceready');
         var pushNotification = window.plugins.pushNotification;
         if(device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos"){ 
-           // alert('registering android device');
+            alert('registering android device');
             pushNotification.register(app.successHandler, app.errorHandler, 
             {
                 "senderID":"211518520885",
@@ -102,8 +102,8 @@ var app = {
                      }
                      if(lastURL == null)
                      {
-                         localStorage.setItem("lastURL","http://10.0.3.2:8100");
-                        // localStorage.setItem("lastURL","http://192.168.1.6:8100");
+                         //localStorage.setItem("lastURL","http://10.0.3.2:8100");
+                        localStorage.setItem("lastURL","http://192.168.1.10:8100");
                          lastURL = localStorage.getItem('lastURL');
                        //  alert('Last URL ' +lastURL);
                          
