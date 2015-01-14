@@ -108,7 +108,7 @@ var app = {
                        //  alert('Last URL ' +lastURL);
                          
                      }
-                     var ref = window.open(lastURL, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
+                     var ref = window.open(lastURL, '_blank', 'location=no ,toolbar=no, EnableViewPortScale=yes');
                          ref.addEventListener('loadstart', function(event) { 
                             // alert('Opening Ionic URL: ' + event.url); 
                          });
