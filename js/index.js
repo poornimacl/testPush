@@ -102,13 +102,13 @@ var app = {
                      }
                      if(lastURL == null)
                      {
-                         //localStorage.setItem("lastURL","http://10.0.3.2:8100");
-                        localStorage.setItem("lastURL","http://192.168.1.10:8100");
+                         localStorage.setItem("lastURL","http://10.0.3.2:8100");
+                       // localStorage.setItem("lastURL","http://192.168.1.10:8100");
                          lastURL = localStorage.getItem('lastURL');
                        //  alert('Last URL ' +lastURL);
                          
                      }
-                     var ref = window.open(lastURL, '_blank', 'location=no ,toolbar=no, EnableViewPortScale=yes');
+                     var ref = window.open(lastURL, '_blank', 'location=no ,toolbar=no');
                          ref.addEventListener('loadstart', function(event) { 
                             // alert('Opening Ionic URL: ' + event.url); 
                          });
@@ -127,7 +127,7 @@ var app = {
                // use e.foreground or e.coldstart to handle different states of launches 
                 localStorage.setItem('lastURL',e.message);
           
-                var ref = window.open(e.message, '_blank', 'location=yes ,toolbar=yes, EnableViewPortScale=yes');
+                var ref = window.open(e.message, '_blank', 'location=no ,toolbar=no');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('Open URL in notification: ' + event.url); });
                 
