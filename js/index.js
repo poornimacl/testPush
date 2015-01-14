@@ -108,7 +108,7 @@ var app = {
                        //  alert('Last URL ' +lastURL);
                          
                      }
-                     var ref = window.open(lastURL, '_blank', 'location=no');
+                     var ref = window.open(lastURL, '_blank', 'location=no,toolbar=no');
                          ref.addEventListener('loadstart', function(event) { 
                             // alert('Opening Ionic URL: ' + event.url); 
                          });
@@ -127,7 +127,7 @@ var app = {
                // use e.foreground or e.coldstart to handle different states of launches 
                 localStorage.setItem('lastURL',e.message);
           
-                var ref = window.open(e.message, '_blank', 'location=no');
+                var ref = window.open(e.message, '_blank', 'location=no,toolbar=no');
                     ref.addEventListener('loadstart', function(event) { 
                         alert('Open URL in notification: ' + event.url); });
                 
